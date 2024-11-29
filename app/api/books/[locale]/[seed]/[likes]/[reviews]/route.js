@@ -183,3 +183,19 @@ export const GET = async (request, props) => {
 
     return response;
 };
+// Handle cors
+export async function OPTIONS(request) {
+    const response = NextResponse.json({}, { status: 200 });
+    response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    response.headers.set(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Authorization"
+    );
+    response.headers.set("Access-Control-Allow-Credentials", "true");
+    response.headers.set(
+        "Access-Control-Allow-Origin",
+        process.env.ALLOWED_ORIGIN || "*"
+    );
+
+    return response;
+}

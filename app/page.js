@@ -29,6 +29,7 @@ export default function Home() {
                     });
                 } else {
                     setError("Internal error");
+                    console.log(response);
                 }
             } catch (err) {
                 console.error("Error fetching books:", err);
@@ -37,7 +38,7 @@ export default function Home() {
         };
 
         fetchData();
-    }, []);
+    }, [data]);
     if (error) {
         return <div>{error}</div>;
     }
