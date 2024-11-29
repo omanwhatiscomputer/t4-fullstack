@@ -9,9 +9,13 @@ export const fetchBooks = async (itoken, seed, locale, likes, reviews) => {
         headers = { ...headers, itoken };
     }
 
-    const BACKEND_API = "https://t4-fullstack.vercel.app";
+    // to prevent cached data from being returnced in vercel.
+    const nonce = new Date().toISOString();
 
-    const url = `${BACKEND_API}/api/books/${locale}/${seed}/${likes}/${reviews}`;
+    const BACKEND_API = "https://t4-fullstack.vercel.app";
+    // const BACKEND_API = "http://localhost:3000";
+
+    const url = `${BACKEND_API}/api/books/${locale}/${seed}/${likes}/${reviews}?nonce=${nonce}`;
     const options = {
         method: "GET",
         headers: headers,

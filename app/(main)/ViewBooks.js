@@ -113,6 +113,7 @@ export default function ViewBooks(props) {
         flushPrevBooks = false
     ) {
         if (isLoading) return;
+        console.log(t || itoken);
         isLoading = true;
         const moreBooks = await fetchBooks(
             t || itoken,
@@ -135,6 +136,9 @@ export default function ViewBooks(props) {
         let timeoutID2;
         let timeoutID3;
         let timeoutID4;
+        // if (inView) {
+        //     loadMoreBooks();
+        // }
         if (inView) {
             loadMoreBooks();
             if (window.innerHeight > 1080 && inView) {
@@ -155,20 +159,22 @@ export default function ViewBooks(props) {
                         }
                     }, 3000);
             }
-            // timeoutID3 =
-            //     inView &&
-            //     setTimeout(() => {
-            //         if (inView) {
-            //             loadMoreBooks();
-            //         }
-            //     }, 7500);
-            // timeoutID4 =
-            //     inView &&
-            //     setTimeout(() => {
-            //         if (inView) {
-            //             loadMoreBooks();
-            //         }
-            //     }, 10000);
+            //======================================================
+            timeoutID3 =
+                inView &&
+                setTimeout(() => {
+                    if (inView) {
+                        loadMoreBooks();
+                    }
+                }, 7500);
+            timeoutID4 =
+                inView &&
+                setTimeout(() => {
+                    if (inView) {
+                        loadMoreBooks();
+                    }
+                }, 10000);
+            //=====================================================
         }
 
         return () => {
