@@ -185,17 +185,15 @@ export const GET = async (request, props) => {
 };
 // Handle cors
 export async function OPTIONS(request) {
+    const origin = request.headers.get("origin") || "*";
     const response = NextResponse.json({}, { status: 200 });
     response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     response.headers.set(
         "Access-Control-Allow-Headers",
-        "Content-Type, Authorization"
+        "Content-Type, Authorization, itoken"
     );
     response.headers.set("Access-Control-Allow-Credentials", "true");
-    response.headers.set(
-        "Access-Control-Allow-Origin",
-        process.env.ALLOWED_ORIGIN || "*"
-    );
+    response.headers.set("Access-Control-Allow-Origin", origin || "*");
 
     return response;
 }

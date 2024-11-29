@@ -15,7 +15,7 @@ export const fetchBooks = async (itoken, seed, locale, likes, reviews) => {
     const options = {
         method: "GET",
         headers: headers,
-        credentials: "include",
+        // credentials: "include",
     };
 
     const apiResponse = await fetch(url, options);
