@@ -1,0 +1,42 @@
+{
+    "en": {
+        "Title": "Title",
+        "Authors": "Author(s)",
+        "Publisher": "Publisher",
+        "by": "by",
+        "Paperback": "Paperback",
+        "Review": "Review",
+        "Likes": "Likes",
+        "Language": "Language"
+    },
+    "fr": {
+        "Title": "Titre",
+        "Authors": "Auteur(s)",
+        "Publisher": "Éditeur",
+        "by": "par",
+        "Paperback": "Broché",
+        "Review": "Critique",
+        "Likes": "J'aime",
+        "Language": "Langue"
+    },
+    "de": {
+        "Title": "Titel",
+        "Authors": "Autor(en)",
+        "Publisher": "Verlag",
+        "by": "von",
+        "Paperback": "Taschenbuch",
+        "Review": "Rezension",
+        "Likes": "Likes",
+        "Language": "Sprache"
+    },
+    "es": {
+        "Title": "Título",
+        "Authors": "Autor(es)",
+        "Publisher": "Editorial",
+        "by": "por",
+        "Paperback": "Rústica",
+        "Review": "Reseña",
+        "Likes": "Me gusta",
+        "Language": "Idioma"
+    }
+}
