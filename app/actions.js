@@ -9,7 +9,10 @@ export const fetchBooks = async (itoken, seed, locale, likes, reviews) => {
         headers = { ...headers, itoken };
     }
 
-    const url = `http://localhost:3000/api/books/${locale}/${seed}/${likes}/${reviews}`;
+    console.log("This is the api: " + process.env.BACKEND_API);
+    const BACKEND_API = process.env.BACKEND_API || "http://localhost:3000";
+
+    const url = `${BACKEND_API}/api/books/${locale}/${seed}/${likes}/${reviews}`;
     const options = {
         method: "GET",
         headers: headers,
