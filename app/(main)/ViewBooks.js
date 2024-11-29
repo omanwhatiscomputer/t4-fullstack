@@ -195,10 +195,10 @@ export default function ViewBooks(props) {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            window.location.reload();
+            // window.location.reload();
             window.scrollTo(0, 0);
         }
-    }, []);
+    }, [itoken, seed, locale, reviews, likes]);
 
     const tHeadSticky = "sticky top-[6.7rem] z-10 bg-slate-50";
     const tHeadBorderStyle = "sticky top-[9.2rem] z-10 bg-black";
