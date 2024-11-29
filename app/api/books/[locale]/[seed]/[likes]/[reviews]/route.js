@@ -3,6 +3,7 @@ import { en, base, es, de, fr, Faker } from "@faker-js/faker";
 import Rand from "rand-seed";
 import { NextResponse } from "next/server";
 import { v4 as uuid } from "uuid";
+import userFakerInstances from "./Map";
 
 const booksPerFetch = 20;
 
@@ -13,7 +14,7 @@ var fakerLocales = {
     de: [de, en, base],
 };
 
-var userFakerInstances = new Map();
+// var userFakerInstances = new Map();
 
 const createNewFakerInstance = (locale) => {
     return new Faker({ locale: locale });
