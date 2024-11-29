@@ -10,7 +10,8 @@ export const fetchBooks = async (itoken, seed, locale, likes, reviews) => {
     }
 
     console.log("This is the api: " + process.env.BACKEND_API);
-    const BACKEND_API = process.env.BACKEND_API || "http://localhost:3000";
+    const BACKEND_API =
+        process.env.BACKEND_API || "https://t4-fullstack.vercel.app";
 
     const url = `${BACKEND_API}/api/books/${locale}/${seed}/${likes}/${reviews}`;
     const options = {
