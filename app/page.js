@@ -6,6 +6,7 @@ export default async function Home() {
     const locale = "en";
     const reviews = 3.0;
     const response = await fetchBooks(null, seed, locale, likes, reviews);
+    if (response.status !== 200) return <div>Not found</div>;
 
     // const arr = Array.from(Array(100).keys());
     return (
