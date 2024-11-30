@@ -11,9 +11,10 @@ const booksPerFetch = 20;
 let isLoading = false;
 
 export default function ViewBooks(props) {
+    const [hasLoadedInitially, setHasLoadedInitially] = useState(false);
     const [books, setBooks] = useState(props.books);
 
-    const [seed, setSeed] = useState(props.seed || 0);
+    const [seed, setSeed] = useState(props.seed);
 
     const [locale, setLocale] = useState(props.locale || "en");
     const [likes, setLikes] = useState(props.likes);
@@ -46,8 +47,34 @@ export default function ViewBooks(props) {
     }, [reviews]);
 
     // deploy debounced params
+    // useEffect(() => {
+    //     if (!debouncedSeed || !debouncedReviews) return;
+    //     if (books.length > booksPerFetch - 1) {
+    //         setBooks([]);
+    //         setActiveAccordion(null);
+    //         loadMoreBooks(
+    //             null,
+    //             null,
+    //             null,
+    //             debouncedSeed,
+    //             debouncedReviews,
+    //             true
+    //         );
+    //     }
+    // }, [debouncedSeed, debouncedReviews]);
     useEffect(() => {
-        if (books.length > booksPerFetch) {
+        if (!hasLoadedInitially) {
+            setHasLoadedInitially(true);
+            // Call loadMoreBooks with flushPrevBooks = false during the first load
+            loadMoreBooks(
+                null,
+                null,
+                null,
+                debouncedSeed,
+                debouncedReviews,
+                false
+            );
+        } else {
             setBooks([]);
             setActiveAccordion(null);
             loadMoreBooks(
@@ -63,7 +90,7 @@ export default function ViewBooks(props) {
 
     const handleSeedChange = (value) => {
         if (value !== seed) {
-            if (!isLoading) setSeed(value);
+            setSeed(value);
             // setBooks([]);
             // loadMoreBooks(null, null, null, value, null, true);
         }
@@ -88,7 +115,7 @@ export default function ViewBooks(props) {
     };
     const handleReviewsChange = (value) => {
         if (reviews !== value) {
-            if (!isLoading) setReviews(value);
+            setReviews(value);
             // setBooks([]);
             // loadMoreBooks(null, null, null, null, value, true);
         }
@@ -136,9 +163,9 @@ export default function ViewBooks(props) {
         let timeoutID2;
         let timeoutID3;
         let timeoutID4;
-        // if (inView) {
-        //     loadMoreBooks();
-        // }
+        if (inView) {
+            loadMoreBooks();
+        }
         if (inView) {
             loadMoreBooks();
             if (window.innerHeight > 1080 && inView) {
@@ -159,22 +186,6 @@ export default function ViewBooks(props) {
                         }
                     }, 3000);
             }
-            //======================================================
-            // timeoutID3 =
-            //     inView &&
-            //     setTimeout(() => {
-            //         if (inView) {
-            //             loadMoreBooks();
-            //         }
-            //     }, 7500);
-            // timeoutID4 =
-            //     inView &&
-            //     setTimeout(() => {
-            //         if (inView) {
-            //             loadMoreBooks();
-            //         }
-            //     }, 10000);
-            //=====================================================
         }
 
         return () => {

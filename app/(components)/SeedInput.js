@@ -6,7 +6,7 @@ const SeedInputField = ({ seed, setSeed, isLoading }) => {
     };
 
     return (
-        <div className="block  h-[107px] w-[150px] lg:w-[250px]">
+        <div className="block  h-[107px] w-[150px] lg:w-[250px] shrink-0">
             {/* <label htmlFor="seed">Seed</label> */}
             <p className="text-sm translate-y-7 translate-x-4 text-slate-600">
                 Seed
