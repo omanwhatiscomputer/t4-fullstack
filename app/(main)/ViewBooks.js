@@ -31,7 +31,7 @@ export default function ViewBooks(props) {
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedSeed(seed);
-        }, 1000);
+        }, 500);
 
         return () => clearTimeout(handler); // Cleanup on component unmount or input change
     }, [seed]);
@@ -117,10 +117,10 @@ export default function ViewBooks(props) {
         isLoading = true;
         const moreBooks = await fetchBooks(
             t || itoken,
-            s !== null ? s : Number(seed),
+            s !== null ? s : Number(debouncedSeed),
             l || locale,
             li !== null ? li : Number(likes),
-            r !== null ? r : Number(reviews)
+            r !== null ? r : Number(debouncedReviews)
         );
 
         if (!flushPrevBooks) {
@@ -160,20 +160,20 @@ export default function ViewBooks(props) {
                     }, 3000);
             }
             //======================================================
-            timeoutID3 =
-                inView &&
-                setTimeout(() => {
-                    if (inView) {
-                        loadMoreBooks();
-                    }
-                }, 7500);
-            timeoutID4 =
-                inView &&
-                setTimeout(() => {
-                    if (inView) {
-                        loadMoreBooks();
-                    }
-                }, 10000);
+            // timeoutID3 =
+            //     inView &&
+            //     setTimeout(() => {
+            //         if (inView) {
+            //             loadMoreBooks();
+            //         }
+            //     }, 7500);
+            // timeoutID4 =
+            //     inView &&
+            //     setTimeout(() => {
+            //         if (inView) {
+            //             loadMoreBooks();
+            //         }
+            //     }, 10000);
             //=====================================================
         }
 
