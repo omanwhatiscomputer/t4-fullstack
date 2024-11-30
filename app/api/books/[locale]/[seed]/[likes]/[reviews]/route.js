@@ -142,7 +142,7 @@ const getRandomData = async (userId, SEED, locale, likes, reviews) => {
                 .between({ from: "1900", to: "2024" })
                 .getFullYear()
                 .toString(),
-            likes: parseInt(Math.random() * 4 + userFakerInstance.likes),
+            likes: parseInt(Math.random() * 2 + userFakerInstance.likes),
             ISBN: generateRandomISBN(userFakerInstance.rand),
             reviews: userFakerInstance.faker.helpers.multiple(generateReviews, {
                 count: parseInt(
